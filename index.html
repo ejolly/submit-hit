@@ -19,21 +19,10 @@
       }
       return params;
     };
-    function submitHIT() {
-      const params = getURLParams();
-      fetch('https://workersandbox.mturk.com/mturk/externalSubmit',
-        {
-          method: 'POST',
-          body: JSON.stringify({ assignmentId: params.assignmentId })
-        }
-      );
-    }
     document.addEventListener('DOMContentLoaded', (ev) => {
       const params = getURLParams();
       console.log('PARAMS')
       console.log(params);
-      const asst = document.getElementById('assignmentId');
-      asst.value = params.assignmentId;
     })
   </script>
 </head>

@@ -32,8 +32,8 @@
       const params = getURLParams();
       console.log('PARAMS')
       console.log(params);
-      const iframe = document.getElementsByClassName('iframe')[0]
-      console.log(iframe.src)
+      const asst = document.getElementById('assignmentId');
+      asst.value = params.assignmentId;
     })
   </script>
 </head>
@@ -41,6 +41,7 @@
 <body>
   <form id='form' action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
   <input type="text" name="assignmentId" id="assignmentId"/>
+  <input type="hidden" name="foo" value="1">
   <button type="submit">Submit</button>
   </form>
 </body>

@@ -28,11 +28,16 @@
         }
       );
     }
+    document.addEventListener('DOMContentLoaded', (ev) => {
+      document.getElementById('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+      })
+    })
   </script>
 </head>
 
 <body>
-  <form action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
+  <form id='form' action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
   <input type="text" name="assignmentId" id="assignmentId"/>
   <button type="submit">Submit</button>
   </form>

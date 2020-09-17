@@ -29,9 +29,10 @@
       );
     }
     document.addEventListener('DOMContentLoaded', (ev) => {
-      document.getElementById('form').addEventListener('submit', (e) => {
-        e.preventDefault();
-      })
+      const params = getURLParams();
+      console.log(params);
+      const iframe = document.getElementsByClassName('ifrmae')[0]
+      console.log(iframe.src)
     })
   </script>
 </head>

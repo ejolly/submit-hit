@@ -32,7 +32,10 @@
 </head>
 
 <body>
-  <button onclick="submitHIT()">Submit</button>
+  <form action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
+  <input type="text" name="assignmentId" id="assignmentId"/>
+  <button type="submit">Submit</button>
+  </form>
 </body>
 
 </html>

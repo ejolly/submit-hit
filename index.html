@@ -23,15 +23,44 @@
       const params = getURLParams();
       console.log('PARAMS')
       console.log(params);
+      let input = document.getElementById('assignmentId');
+      if (params.assignmentId) {
+        input.value = params.assignmentId;
+      } else {
+        input.value = "Couldn't auto fill";
+      }
+      let form = document.getElementById('form');
+      if (window.location.href.includes('workersandbox.mturk.com')) {
+        form.action = "https://workersandbox.mturk.com/mturk/externalSubmit";
+      } else if (window.location.href.includes('worker.mturk.com')) {
+        form.action = "https://www.mturk.com/mturk/externalSubmit"
+      } else {
+        let button = document.getElementById('button');
+        button.disabled = true;
+        input.value = "You're viewing this page from outside mturk"
+      }
     })
   </script>
 </head>
 
 <body>
   <form id='form' action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
-  <input type="text" name="assignmentId" id="assignmentId"/>
-  <input type="hidden" name="foo" value="1">
-  <button type="submit">Submit</button>
+    <h1>Test HIT submission</h1>
+    <h2>This is a barebones page that you can use to test submitting external HITs on Mturk</h2>
+    <h3>It works in both the Mturk sandbox and the real marketplace</h3>
+    <p>To submit a HIT you need an assignment Id. This page will try to auto fill it for you.</p>
+    <p>If you see "Couldn't auto fill below" then you'll need to get it from the website address bar above.</p>
+    <p>It will appear in the URL as something like:</p>
+    <p>
+      https://workersandbox.mturk.com/projects/3VWJW73CHRQAGEUL3IZ6UC3KY7WFZA/tasks/3VQTAXTYN462CYQJAO3SKCA6HZJUB0?assignment_id=<strong>3HYA4D452T5MSNRRM8KKL22GH3AF26</strong>&auto_accept=true
+    </p>
+    <p>Just copy and paste the string of letters and numbers like the bolded ones above without any other symbols (i.e.
+      without any "=" or "&").</p>
+    <input type="text" name="assignmentId" id="assignmentId" style="width: 20rem;" />
+    <input type="hidden" name="foo" value="1">
+    <button type="submit" id='button'>Submit</button>
+    <p style="font-style: italic;">To include this page in your external HITs use the following URL: </p>
+    <span style="font-style: normal;">https://testmturksubmit.netlify.app/</span>
   </form>
 </body>
 
